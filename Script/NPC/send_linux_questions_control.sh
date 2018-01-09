@@ -7,7 +7,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # 发送的群名称
-Gname=${1}
+Gname="${1}"
 
 if [[ -z "${Gname}" ]]; then echo "\n请输入群名称！\n" exit 1;fi
 
@@ -56,8 +56,6 @@ fi
 # 处理下编码，用于合并告警内容的标题和内容，即$2
 message=$(echo -e "${message}" | od -t x1 -A n -v -w10000 | tr " " %)
 
-for x in ${Gname}; do
-    ./qq_sms.sh "$x" "$message"
-done
+./qq_sms.sh "${Gname}" "$message"
 
 exit;

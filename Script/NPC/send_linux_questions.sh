@@ -7,7 +7,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # 发送的群名称
-Gname=${1}
+Gname="${1}"
 
 # 你login.pl中定义的host和port
 API_ADDR="127.0.0.1:5011"
@@ -49,8 +49,6 @@ if [[ "${status}" == "" ]]; then
   message="今日练习未设置!"
 fi
 
-for x in ${Gname}; do
-	./qq_sms.sh "$x" "$message"
-done
+./qq_sms.sh "${Gname}" "$message"
 
 exit;
