@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 set -x;
 
+# 获取今天的日期
+istoday=$(date +%Y-%m-%d)
+
 # 获取未插入 Knowledge 表的 id
 ids=$(mysql -h database -D NPC --user=npc --password="QXCTyPzWEa5rBDs2" --default-character-set=utf8 -s -e "
 SELECT t.id
 FROM NPC.LinuxQuestion t
-WHERE t.stat = '0';
+WHERE t.stat = '0'
+AND t.date <= '${istoday}';
 " 2> /dev/null)
 
 for i in $ids
@@ -33,7 +37,7 @@ do
 
     # 插入 Knowledge 表并刷新数据。
     mysql -h database -D NPC --user=npc --password="QXCTyPzWEa5rBDs2" --default-character-set=utf8 -s -e "
-    INSERT INTO KnowledgeBase_51CTO (gname,\`key\`,value) VALUES ('__全局__','练习回顾：${today}','每日一练（${today}）：\n问题：\n${question}\n\n答案：\n${answer}');
+    INSERT INTO KnowledgeBase (gname,\`key\`,value) VALUES ('__全局__','练习回顾：${today}','每日一练（${today}）：\n问题：\n${question}\n\n答案：\n${answer}');
     UPDATE NPC.LinuxQuestion t
     SET t.stat='1'
     WHERE t.id = '${i}';
