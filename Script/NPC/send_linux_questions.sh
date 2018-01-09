@@ -42,6 +42,9 @@ then
 elif [[ "${ask_type}" == "answer" ]]
 then
   message="每日一练（${today}）：\n答案：\n${answer}"
+else
+  echo "请输出正确的 \$2 .";
+  exit 1;
 fi
 
 # 如果未找到，则输出指定信息
