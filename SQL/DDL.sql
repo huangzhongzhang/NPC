@@ -4,13 +4,13 @@ CREATE TABLE IF NOT EXISTS NPC.Crontab
 (
   id      INT AUTO_INCREMENT
     PRIMARY KEY,
-  time    TEXT            NOT NULL
+  time    TINYTEXT            NOT NULL
   COMMENT 'crontab 时间',
-  command LONGTEXT        NOT NULL
+  command TEXT        NOT NULL
   COMMENT '执行命令',
   stat    INT DEFAULT '1' NOT NULL
   COMMENT '状态',
-  comment LONGTEXT        NULL
+  comment TINYTEXT        NULL
   COMMENT '备注',
   CONSTRAINT Crontab_id_uindex
   UNIQUE (id)
@@ -25,18 +25,18 @@ CREATE TABLE IF NOT EXISTS NPC.Information
   id      INT AUTO_INCREMENT
   COMMENT 'ID'
     PRIMARY KEY,
-  time    TEXT            NOT NULL
+  time    TINYTEXT            NOT NULL
   COMMENT 'crontab 时间',
   gnumber INT             NOT NULL
   COMMENT '群号',
-  gname   TEXT            NOT NULL
+  gname   TINYTEXT            NOT NULL
   COMMENT '群组名称
 	',
-  message LONGTEXT        NOT NULL
+  message TINYTEXT        NOT NULL
   COMMENT '要发送的信息',
   stat    INT DEFAULT '1' NOT NULL
   COMMENT '状态',
-  comment TEXT            NULL
+  comment TINYTEXT            NULL
   COMMENT '备注',
   CONSTRAINT Information_id_uindex
   UNIQUE (id)
@@ -50,15 +50,15 @@ CREATE TABLE IF NOT EXISTS NPC.KnowledgeBase
 (
   id      INT AUTO_INCREMENT
     PRIMARY KEY,
-  gname   LONGTEXT        NOT NULL
+  gname   TINYTEXT        NOT NULL
   COMMENT '群组名称',
-  `key`   LONGTEXT        NOT NULL
+  `key`   TINYTEXT        NOT NULL
   COMMENT '关键字',
-  value   LONGTEXT        NULL
+  value   TINYTEXT        NULL
   COMMENT '回复',
   stat    INT DEFAULT '1' NOT NULL
   COMMENT '状态',
-  comment LONGTEXT        NULL
+  comment TINYTEXT        NULL
   COMMENT '备注',
   CONSTRAINT KnowledgeBase_id_uindex
   UNIQUE (id)
@@ -75,9 +75,9 @@ CREATE TABLE IF NOT EXISTS NPC.LinuxQuestion
   date     DATE            NOT NULL
   COMMENT '提取时间'
     PRIMARY KEY,
-  question LONGTEXT        NOT NULL
+  question TINYTEXT        NOT NULL
   COMMENT '问题',
-  answer   LONGTEXT        NOT NULL
+  answer   TINYTEXT        NOT NULL
   COMMENT '答案',
   stat     INT DEFAULT '0' NOT NULL
   COMMENT '是否已执行',
