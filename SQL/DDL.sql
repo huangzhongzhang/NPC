@@ -4,13 +4,13 @@ CREATE TABLE IF NOT EXISTS NPC.Crontab
 (
   id      INT AUTO_INCREMENT
     PRIMARY KEY,
-  time    TINYTEXT            NOT NULL
+  time    TEXT            NOT NULL
   COMMENT 'crontab 时间',
   command TEXT        NOT NULL
   COMMENT '执行命令',
   stat    INT DEFAULT '1' NOT NULL
   COMMENT '状态',
-  comment TINYTEXT        NULL
+  comment TEXT        NULL
   COMMENT '备注',
   CONSTRAINT Crontab_id_uindex
   UNIQUE (id)
@@ -25,18 +25,18 @@ CREATE TABLE IF NOT EXISTS NPC.Information
   id      INT AUTO_INCREMENT
   COMMENT 'ID'
     PRIMARY KEY,
-  time    TINYTEXT            NOT NULL
+  time    TEXT            NOT NULL
   COMMENT 'crontab 时间',
   gnumber INT             NOT NULL
   COMMENT '群号',
-  gname   TINYTEXT            NOT NULL
+  gname   TEXT            NOT NULL
   COMMENT '群组名称
 	',
-  message TINYTEXT        NOT NULL
+  message TEXT        NOT NULL
   COMMENT '要发送的信息',
   stat    INT DEFAULT '1' NOT NULL
   COMMENT '状态',
-  comment TINYTEXT            NULL
+  comment TEXT            NULL
   COMMENT '备注',
   CONSTRAINT Information_id_uindex
   UNIQUE (id)
@@ -50,15 +50,15 @@ CREATE TABLE IF NOT EXISTS NPC.KnowledgeBase
 (
   id      INT AUTO_INCREMENT
     PRIMARY KEY,
-  gname   TINYTEXT        NOT NULL
+  gname   TEXT        NOT NULL
   COMMENT '群组名称',
-  `key`   TINYTEXT        NOT NULL
+  `key`   TEXT        NOT NULL
   COMMENT '关键字',
-  value   TINYTEXT        NULL
+  value   TEXT        NULL
   COMMENT '回复',
   stat    INT DEFAULT '1' NOT NULL
   COMMENT '状态',
-  comment TINYTEXT        NULL
+  comment TEXT        NULL
   COMMENT '备注',
   CONSTRAINT KnowledgeBase_id_uindex
   UNIQUE (id)
@@ -75,9 +75,9 @@ CREATE TABLE IF NOT EXISTS NPC.LinuxQuestion
   date     DATE            NOT NULL
   COMMENT '提取时间'
     PRIMARY KEY,
-  question TINYTEXT        NOT NULL
+  question TEXT        NOT NULL
   COMMENT '问题',
-  answer   TINYTEXT        NOT NULL
+  answer   TEXT        NOT NULL
   COMMENT '答案',
   stat     INT DEFAULT '0' NOT NULL
   COMMENT '是否已执行',
