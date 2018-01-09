@@ -49,6 +49,6 @@ if [[ "${status}" == "" ]]; then
   message="今日练习未设置!"
 fi
 
-./qq_sms.sh "${Gname}" "$message"
+bash qq_sms.sh "${Gname}" "$message"
 
 exit;

@@ -8,4 +8,4 @@ Gname="${1}"
 
 message="练习回顾：${yestoday}"
 
-./qq_sms.sh "${Gname}" "$message"
+bash qq_sms.sh "${Gname}" "$message"

@@ -56,6 +56,6 @@ fi
 # 处理下编码，用于合并告警内容的标题和内容，即$2
 message=$(echo -e "${message}" | od -t x1 -A n -v -w10000 | tr " " %)
 
-./qq_sms.sh "${Gname}" "$message"
+bash qq_sms.sh "${Gname}" "$message"
 
 exit;
