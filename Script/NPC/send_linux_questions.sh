@@ -7,6 +7,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # 发送的群名称
+# 群名称不能带空格！
 Gname="${1}"
 
 # 你login.pl中定义的host和port
@@ -52,7 +53,12 @@ if [[ "${status}" == "" ]]; then
   message="今日练习未设置!"
 fi
 
-bash qq_sms.sh "${Gname}" "$message";
+for x in ${Gname}
+do
+    bash qq_sms.sh "${x}" "${message}";
+    sleep 5;
+done
+
 bash set_exercise_review.sh;
 
 exit;
