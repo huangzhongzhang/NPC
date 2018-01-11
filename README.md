@@ -42,7 +42,7 @@ QQ_PASSWD="ABCD"
 
 更改完成后创建镜像并运行即可：
 
-** 依赖镜像下载时较慢，建议添加 docker 加速器后执行，比如 DaoCloud 的加速器：https://www.daocloud.io/mirror **
+**依赖镜像下载时较慢，建议添加 docker 加速器后执行，比如 DaoCloud 的加速器：https://www.daocloud.io/mirror**
 
 ```bash
 bash build.sh run
