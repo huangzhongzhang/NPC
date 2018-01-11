@@ -16,7 +16,11 @@ elif [[ "$1" == "run" ]]; then
     # 运行数据库容器
     docker run -d --name NPC_DATABASE \
     -p 39306:3306 \
+    # 数据存储路径，不需要的可以不设置
+    #-v /etc/mysql:/etc/mysql
+    #-v /var/lib/mysql:/var/lib/mysql
     hzz1989/npc_database;
+
     # 运行NPC容器
     docker run -t --name NPC \
     -p 5011:5011 \
