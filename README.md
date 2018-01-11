@@ -2,9 +2,11 @@
 
 以 Mojo-Webqq-Docker 为基础，具备 smartreply 和 openqq 等功能的 NPC。
 
+**由于腾讯接口限制，NPC 每次扫码登录只能维持在线48小时以内，若出现超时、掉线或网络异常，需重新扫码登录（若配置了邮件发送，会发送最多10次二维码邮件进行通知）。**
+
 ## Mojo::Webqq项目地址:
 [Mojo::Webqq](https://github.com/sjdy521/Mojo-Webqq)  
-感谢[灰灰](https://github.com/sjdy521)的倾情付出.
+感谢[灰灰](https://github.com/sjdy521)的倾情付出。
 
 ## 包含功能
 
@@ -42,7 +44,7 @@ QQ_PASSWD="ABCD"
 
 更改完成后创建镜像并运行即可：
 
-**依赖镜像下载时较慢，建议添加 docker 加速器后执行，比如 DaoCloud 的加速器：https://www.daocloud.io/mirror**
+**依赖镜像下载时较慢，建议添加 docker 加速器后执行，比如 DaoCloud 的加速器：https://www.daocloud.io/mirror。**
 
 ```bash
 bash build.sh run
@@ -52,4 +54,6 @@ bash build.sh run
 
 * 简单使用方式只包含前3个功能，后面的功能需依托数据库配置。
 
-## 待完善。
+## 数据库配置
+
+
