@@ -56,4 +56,29 @@ bash build.sh run
 
 ## 数据库配置
 
+NPC_DATABASE 镜像运行后，会出现如下几张表：
+
+`Crontab`：配置定时任务，配合脚本可实现若干功能；
+`Information`：信息发送，用于配置定时发送消息的功能；
+`KnowledgeBase`：知识库，用于配置触发回复的 key 和value；
+`LinuxQuestion`：习题库，用于配置练习题以便定时发送。
+
+### 定时任务功能
+
+若要实现 `自定义回复消息` 以及 `习题发送及定期回顾功能` ，我们需要配置 `Crontab`
+定时任务。
+
+示例如下：
+
+| id | time | command | stat | comment |
+| --- | --- | --- | --- | --- |
+|213|*/10 * * * *|cd /root;bash -x set_knowledge.sh &> set_knowledge_exec.log|1|
+|214|18 09 * * 1-5|cd /root;bash -x send_linux_questions.sh "51CTOLinux微职位-精英 51CTO学院Linux微职位" "question" &> TESTQ1|1|
+|215|38 09 * * 1-5|cd /root;bash -x send_linux_questions.sh "51CTOLinux微职位-精英 51CTO学院Linux微职位" "answer" &> TESTA1|1|
+|219|08 09 * * 2-6|cd /root;bash -x exercise_review.sh "51CTOLinux微职位-精英 51CTO学院Linux微职位"|1|
+
+
+
+
+
 
