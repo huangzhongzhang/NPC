@@ -63,6 +63,26 @@ NPC_DATABASE 镜像运行后，会出现如下几张表：
 `KnowledgeBase`：知识库，用于配置触发回复的 key 和value；
 `LinuxQuestion`：习题库，用于配置练习题以便定时发送。
 
+### 定时信息发送
+
+定时信息发送主要是实现定时向某些QQ群发送消息，以达到定时通知的功能。
+
+`Information` 表配置示例如下：
+
+| id | time | gnumber | gname | message | stat | comment |
+| --- | --- | --- | --- | --- | --- | --- |
+| 214 | "10 16 * * 1,3" | 361531259 | woego-全国版本 | 童鞋们，充饭卡的时间到啦！ :) | 1 | WOEGO |
+
+各字段含义如下：
+
+`id`：唯一，无实意；
+`time`：发送时间，crontab 的格式；
+`gnumber`：需要发送的群号码；
+`gname`：需要发送的群名称；
+`message`：发送的信息；
+`stat`：状态：1，生效；0，失效；
+`comment`：备注。
+
 ### 定时任务功能
 
 若要实现 `自定义回复消息` 以及 `习题发送及定期回顾功能` ，我们需要配置 `Crontab`
@@ -76,8 +96,6 @@ NPC_DATABASE 镜像运行后，会出现如下几张表：
 |214|18 09 * * 1-5|cd /root;bash -x send_linux_questions.sh "51CTOLinux微职位-精英 51CTO学院Linux微职位" "question" &> TESTQ1|1|
 |215|38 09 * * 1-5|cd /root;bash -x send_linux_questions.sh "51CTOLinux微职位-精英 51CTO学院Linux微职位" "answer" &> TESTA1|1|
 |219|08 09 * * 2-6|cd /root;bash -x exercise_review.sh "51CTOLinux微职位-精英 51CTO学院Linux微职位"|1|
-
-
 
 
 
