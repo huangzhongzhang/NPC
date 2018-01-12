@@ -56,7 +56,7 @@ fi
 for x in ${Gname}
 do
     bash qq_sms.sh "${x}" "${message}";
-    sleep 5;
+    sleep 10;
 done
 
 bash set_exercise_review.sh;

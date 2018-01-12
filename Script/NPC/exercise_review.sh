@@ -12,5 +12,5 @@ message="练习回顾：${yestoday}"
 for x in ${Gname}
 do
     bash qq_sms.sh "${x}" "${message}";
-    sleep 5;
+    sleep 10;
 done
