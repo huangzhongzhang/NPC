@@ -10,7 +10,6 @@ WHERE t.stat='1';
 " 2> /dev/null)
 
 # 轮训并写入指定文件
-rm -f KnowledgeBase.txt;
 for i in ${IDS}; do
 	# 获取相关信息
 	gname=$(mysql -h database -D NPC --user=npc --password="QXCTyPzWEa5rBDs2" --default-character-set=utf8 -s -e "
@@ -28,7 +27,8 @@ for i in ${IDS}; do
 	WHERE t.stat='1'
 	AND t.id='$i';
 	" 2> /dev/null)
-    echo "${gname} # ${key} # ${value}"|tee -a KnowledgeBase.txt;
+    echo "${gname} # ${key} # ${value}"|tee -a .KnowledgeBase.txt;
 done
+mv .KnowledgeBase.txt KnowledgeBase.txt;
 cd - > /dev/null;
 exit;
