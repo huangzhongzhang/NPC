@@ -73,7 +73,7 @@ NPC_DATABASE 镜像运行后，会出现如下几张表：
 | --- | --- | --- | --- | --- | --- | --- |
 | 214 | "10 16 * * 1,3" | 361531XXX | 全国版本 | 童鞋们，充饭卡的时间到啦！ :) | 1 | WEG |
 
-各字段含义如下：
+**`Information` 表各字段含义如下：**
 
 `id`：唯一，无实意；
 
@@ -93,14 +93,14 @@ NPC_DATABASE 镜像运行后，会出现如下几张表：
 
 通过设定 key 和 value，以实现 NPC 接受到关键字后，回复相关内容。
 
-`KnowledgeBase` 表配置示例如下：
+**`KnowledgeBase` 表配置示例如下：**
 
 | id | gname | key | value | stat | comment|
 | --- | --- | --- | --- | --- | --- |
 | 60 | 全国版本 | wifi密码 | abcd!6789 | 1 | WEG |
 | 61 | `__全局__` | ID84 | 84-陕西-DB1 | 1 | WEG |
 
-各字段含义如下：
+**`KnowledgeBase` 表各字段含义如下：**
 
 `id`：唯一，无实意；
 
@@ -120,14 +120,14 @@ NPC_DATABASE 镜像运行后，会出现如下几张表：
 
 设定习题，定时发送习题及答案，给有需要的童鞋。
 
-`LinuxQuestion` 表配置示例如下：
+**`LinuxQuestion` 表配置示例如下：**
 
 | id | date | question | answer | stat |
 | --- | --- | --- | --- | --- |
 | 125 | 2018-01-10 | 简述Linux文件系统通过i节点把文件的逻辑结构和物理结构转换的工作过程。 | i节点是一个64字节长的表，表中包含了文件的相关信息，其中有文件的大小、文件所有者、文件的存取许可方式以及文件的类型等重要信息。在i节点表中最重要的内容是磁盘地址表。在磁盘地址表中有13个块号，文件将以块号在磁盘地址表中出现的顺序依次读取相应的块。Linux文件系统通过把i节点和文件名进行连接，当需要读取该文件时，文件系统在当前目录表中查找该文件名对应的项，由此得到该文件相对应的i节点号，通过该i节点的磁盘地址表把分散存放的文件物理块连接成文件的逻辑结构。 | 1 |
 | 126 | 2018-01-11 | 系统管理员的职责包括那些？管理的对象是什么？ | 系统管理员的职责是进行系统资源管理、设备管理、系统性能管理、安全管理和系统性能监测。管理的对象是服务器、用户、服务器的进程及系统的各种资源等。 | 1 |
 
-各字段含义如下：
+**`LinuxQuestion` 表各字段含义如下：**
 
 `id`：唯一，无实意；
 
@@ -146,14 +146,34 @@ NPC_DATABASE 镜像运行后，会出现如下几张表：
 若要实现 `自定义回复消息` 以及 `习题发送及定期回顾功能` ，我们需要配置 `Crontab`
 定时任务。
 
-示例如下：
+**`Crontab` 表示例如下：**
 
 | id | time | command | stat | comment |
 | --- | --- | --- | --- | --- |
-|213|*/10 * * * *|cd /root;bash -x set_knowledge.sh &> set_knowledge_exec.log|1|
-|214|18 09 * * 1-5|cd /root;bash -x send_linux_questions.sh "51CTOLinux微职位-精英 51CTO学院Linux微职位" "question" &> TESTQ1|1|
-|215|38 09 * * 1-5|cd /root;bash -x send_linux_questions.sh "51CTOLinux微职位-精英 51CTO学院Linux微职位" "answer" &> TESTA1|1|
-|219|08 09 * * 2-6|cd /root;bash -x exercise_review.sh "51CTOLinux微职位-精英 51CTO学院Linux微职位"|1|
+| 1 | */10 * * * * | cd /root;bash -x set_knowledge.sh &> /dev/null | 1 |
+| 2 | 18 09 * * 1-5 | cd /root;bash -x send_linux_questions.sh "51CTOLinux微职位-精英 51CTO学院Linux微职位" "question" &> /dev/null | 1 |
+| 3 | 38 09 * * 1-5 | cd /root;bash -x send_linux_questions.sh "51CTOLinux微职位-精英 51CTO学院Linux微职位" "answer" &> /dev/null | 1 |
+| 4 | 08 09 * * 2-6 | cd /root;bash -x exercise_review.sh "51CTOLinux微职位-精英 51CTO学院Linux微职位" &> /dev/null | 1 |
+
+**`crontab` 表各字段解析如下：**
+
+`id`：唯一，无实意；
+
+`time`：发送时间，crontab 的格式；
+
+`command`：执行的命令；
+
+`stat`：状态：1，生效；0，失效。
+
+**`crontab` 表各条目解析如下：**
+
+第一条：`set_knowledge.sh`，设定知识库更新时间。
+
+第二条：`send_linux_questions.sh "XXX" "question"`，设定发送问题的群和发送时间。**多个群可用空格间隔，故群名称不能包含有空格！**
+
+第三条：`send_linux_questions.sh "XXX" "answer"`，设定发送答案的群和发送时间。**多个群可用空格间隔，故群名称不能包含有空格！**
+
+第四条：`exercise_review.sh "XXX"`，设定发送练习回顾的群（前一天的问题及答案）。
 
 
 
