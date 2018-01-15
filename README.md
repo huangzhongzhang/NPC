@@ -42,6 +42,9 @@ SMTP_PASSWD="rwkbsbruwqhldXXX"
 QQ_PASSWD="ABCD" 
 ```
 
+* container 终端也会打印二维码，邮箱信息非必填。
+* QQ 密码涉及到 uid 的获取，如果不使用 uid 发送消息，也可以不填。
+
 更改完成后创建镜像并运行即可：
 
 **依赖镜像下载时较慢，建议添加 docker 加速器后执行，比如 DaoCloud 的加速器：https://www.daocloud.io/mirror 。**
