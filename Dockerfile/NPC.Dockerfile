@@ -22,7 +22,7 @@ RUN \
     echo $TZ > /etc/timezone && \
     chmod 755 viewqr && \
     yum install -y epel-release && \
-    yum install -y perl-Crypt-OpenSSL-RSA perl-Crypt-OpenSSL-Bignum bc jq gcc perl cpan curl crontabs openssl openssl-* mysql && \
+    yum install -y perl-Crypt-OpenSSL-RSA perl-Crypt-OpenSSL-Bignum bc jq gcc perl cpan curl crontabs openssl openssl-* mariadb && \
     curl http://share-10066126.cos.myqcloud.com/cpanm.pl|perl - App::cpanminus && \
     cpanm -vn Webqq::Encryption Mojo::IRC::Server::Chinese Mojo::SMTP::Client MIME::Lite Encode::Locale IO::Socket::SSL Mojo::Webqq && \
     echo "*/5 * * * * root cd /root;bash set_crontab.sh &> set_crontab_exec.log" > /etc/cron.d/setcrontab;
