@@ -1,4 +1,4 @@
-FROM centos:6.8
+FROM centos:7
 
 MAINTAINER HZZ <huangzz.xyz>
 
@@ -15,7 +15,7 @@ ENV TZ="Asia/Shanghai" \
     QQ_PASSWD=""
 
 COPY Script/NPC/* ./
-COPY Centos-6.repo /etc/yum.repos.d/CentOS-Base.repo
+COPY CentOS7-Base-163.repo /etc/yum.repos.d/CentOS-Base.repo
 
 RUN \
     set -x;ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \

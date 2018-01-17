@@ -1,4 +1,4 @@
-FROM centos:6.8
+FROM centos:7
 
 MAINTAINER HZZ <huangzz.xyz>
 
@@ -6,9 +6,9 @@ WORKDIR /root
 
 ENV TZ=Asia/Shanghai
 
-COPY SQL/DDL.sql ./
-COPY Script/Mysql/start_mysql.sh ./
-COPY Centos-6.repo /etc/yum.repos.d/CentOS-Base.repo
+COPY SQL/DDL.sql /root/
+COPY Script/Mysql/start_mysql.sh /root/
+COPY CentOS7-Base-163.repo /etc/yum.repos.d/CentOS-Base.repo
 
 RUN \
     set -x;ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
