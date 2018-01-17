@@ -1,4 +1,4 @@
-FROM centos:6.8
+FROM centos:6
 
 MAINTAINER HZZ <huangzz.xyz>
 
