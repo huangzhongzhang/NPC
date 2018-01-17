@@ -6,8 +6,8 @@ my $client=Mojo::Webqq->new(
     ua_debug    => 0,         # 是否打印详细的debug信息
     log_level   => "debug",     # 日志打印级别
     login_type  =>  "qrlogin", # "qrlogin"表示二维码登录
-    poll_failure_count_max  =>  100, # 获取信息失败重试次数
-    ignore_poll_retcode  =>  [102,109,110,1202,100012], # 忽略的错误码
+    poll_failure_count_max  =>  200, # 获取信息失败重试次数
+    ignore_poll_retcode  =>  [102,109,110,1202,100000,100012], # 忽略的错误码
     pwd  =>  "$ARGV[6]", # 你的QQ账号密码的md5值，shell下通过echo -n xxx|md5sum生成md5值
 #   tmpdir  =>  "/tmp", # 二维码存放目录
 );
