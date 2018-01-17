@@ -30,3 +30,4 @@ RUN \
 EXPOSE 5011
 
 ENTRYPOINT ["bash","start_npc.sh"]
+CMD ["/usr/sbin/init"]；

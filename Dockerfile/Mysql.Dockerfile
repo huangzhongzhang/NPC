@@ -20,3 +20,5 @@ VOLUME ["/etc/mysql", "/var/lib/mysql"]
 EXPOSE 3306
 
 ENTRYPOINT ["bash","start_mysql.sh"]
+
+CMD ["/usr/sbin/init"]；
