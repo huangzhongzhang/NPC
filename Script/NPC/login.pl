@@ -2,26 +2,33 @@
 
 use Mojo::Webqq;
 
+# 使用账号或二维码登录
+# 注意: 原生的SmartQQ是不支持账号密码登录的
+# 程序实际上是通过 http://qun.qq.com 页面账号密码登录然后和SmartQQ共享登录状态，从而实现账号密码登录
+# 所以，账号密码的登录方式并不稳定，一旦失败，程序会再次自动尝试使用二维码扫描登录
+# 请关闭帐号的密保功能，不支持密保登录
+# 另外，基于账号密码的登录方式，一旦登录所在地发生较大变化，则腾讯服务器可能需要你输入图片验证码
+# 这样就很难实现自动化操作，为了避免这种情况，你需要尽量在pl脚本所在的网络中用浏览器多登录一下 http://qun.qq.com
+
 my $client=Mojo::Webqq->new(
+    account     => "$ARGV[0]",      # QQ账号
     ua_debug    => 0,         # 是否打印详细的debug信息
     log_level   => "debug",     # 日志打印级别
-    login_type  =>  "qrlogin", # "qrlogin"表示二维码登录
+    login_type  =>  "login", # "qrlogin"表示二维码登录，"login"表示账号密码登录。注意: 如果腾讯关闭了帐号密码的登录方式，这种情况下只能使用二维码扫描登录。
     poll_failure_count_max  =>  200, # 获取信息失败重试次数
     ignore_poll_retcode  =>  [102,109,110,1202,100000,100012], # 忽略的错误码
-    pwd  =>  "$ARGV[6]", # 你的QQ账号密码的md5值，shell下通过echo -n xxx|md5sum生成md5值
+    pwd  =>  "$ARGV[1]", # 你的QQ账号密码的md5值，shell下通过echo -n xxx|md5sum生成md5值
 #   tmpdir  =>  "/tmp", # 二维码存放目录
 );
 
-#注意: 腾讯可能已经关闭了帐号密码的登录方式，这种情况下只能使用二维码扫描登录
-
-#发送二维码到邮箱
+# 发送二维码到邮箱
 $client->load("PostQRcode",data=>{
-        smtp    =>  "$ARGV[0]", # 邮箱的smtp地址
-        port    =>  "$ARGV[1]", # smtp服务器端口，默认25
-        from    =>  "$ARGV[2]", # 发件人
-        to      =>  "$ARGV[3]", # 收件人
-        user    =>  "$ARGV[4]", # smtp登录帐号，建议使用要登录的QQ作为发送邮件的账号
-        pass    =>  "$ARGV[5]", # smtp登录密码，若使用QQ邮箱，需手动在 设置-账户 中生成授权码
+        smtp    =>  "$ARGV[2]", # 邮箱的smtp地址
+        port    =>  "$ARGV[3]", # smtp服务器端口，默认25
+        from    =>  "$ARGV[4]", # 发件人
+        to      =>  "$ARGV[5]", # 收件人
+        user    =>  "$ARGV[6]", # smtp登录帐号，建议使用要登录的QQ作为发送邮件的账号
+        pass    =>  "$ARGV[7]", # smtp登录密码，若使用QQ邮箱，需手动在 设置-账户 中生成授权码
     });
 
 $client->login();
