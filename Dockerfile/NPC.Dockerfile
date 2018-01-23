@@ -6,13 +6,14 @@ WORKDIR /root
 
 ENV TZ="Asia/Shanghai" \
     MOJO_WEBQQ_LOG_ENCODING="utf8" \
+    QQ_ACCOUNT="" \
+    QQ_PASSWD="" \
     SMTP_SERVER="smtp.qq.com" \
     SMTP_PORT="465" \
     SMTP_FROM="" \
     MAIL_TO="" \
     SMTP_USER="" \
-    SMTP_PASSWD="" \
-    QQ_PASSWD=""
+    SMTP_PASSWD=""
 
 COPY Script/NPC/* ./
 COPY Centos-6.repo /etc/yum.repos.d/CentOS-Base.repo
