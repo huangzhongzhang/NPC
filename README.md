@@ -123,6 +123,10 @@ NPC_DATABASE 镜像运行后，会出现如下几张表：
 
 设定习题，定时发送习题及答案，给有需要的童鞋。
 
+效果预览：
+
+![NPC](https://github.com/huangzhongzhang/NPC/raw/master/NPC.png)
+
 **`LinuxQuestion` 表配置示例如下：**
 
 | id | date | question | answer | stat |
