@@ -78,9 +78,20 @@ $client->load("GroupManage",data=>{
     });
 
 # smartQQ
-$client->load("SmartReply", data => {
-  apikey => 'd288214dcba801d180167635f3a8deb7', # 可选，参考http://www.tuling123.com/html/doc/apikey.html
-});
+$client->load("SmartReply",data=>{
+        apikey          => 'd288214dcba801d180167635f3a8deb7', #可选，参考http://www.tuling123.com/html/doc/apikey.html
+        #allow_group     => ["PERL学习交流"],  #可选，允许插件的群，可以是群名称或群号码
+        #ban_group       => ["私人群",123456], #可选，禁用该插件的群，可以是群名称或群号码
+        #ban_user        => ["坏蛋",123456], #可选，禁用该插件的用户，可以是用户的显示名称或qq号码
+        notice_reply    => ["对不起，请不要这么频繁的艾特我","对不起，您的艾特次数太多"], #可选，提醒时用语
+        notice_limit    => 8 ,  #可选，达到该次数提醒对话次数太多，提醒语来自默认或 notice_reply
+        warn_limit      => 10,  #可选,达到该次数，会被警告
+        ban_limit       => 12,  #可选,达到该次数会被列入黑名单不再进行回复
+        ban_time        => 1200,#可选，拉入黑名单时间，默认1200秒
+        period          => 600, #可选，限制周期，单位 秒
+        is_need_at      => 1,  #默认是1 是否需要艾特才触发回复 仅针对群消息
+        keyword         => [qw(NPC)], #触发智能回复的关键字
+    });
 
 $client->load("ProgramCode");
 
