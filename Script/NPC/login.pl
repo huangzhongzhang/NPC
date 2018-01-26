@@ -33,7 +33,7 @@ $client->load("PostQRcode",data=>{
 
 $client->login();
 
-$client->load("ShowMsg");
+#$client->load("ShowMsg");
 
 $client->on(receive_message=>sub{
 my $msg = $_[1];
