@@ -1,9 +1,6 @@
 FROM centos:6
-
 MAINTAINER HZZ <huangzz.xyz>
-
 WORKDIR /root
-
 ENV TZ="Asia/Shanghai" \
     MOJO_WEBQQ_LOG_ENCODING="utf8" \
     QQ_ACCOUNT="" \
@@ -14,20 +11,21 @@ ENV TZ="Asia/Shanghai" \
     MAIL_TO="" \
     SMTP_USER="" \
     SMTP_PASSWD=""
-
 COPY Script/NPC/* ./
 COPY Centos-6.repo /etc/yum.repos.d/CentOS-Base.repo
-
 RUN \
     set -x;ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
     echo $TZ > /etc/timezone && \
     chmod 755 viewqr && \
     yum install -y epel-release && \
-    yum install -y perl-Crypt-OpenSSL-RSA perl-Crypt-OpenSSL-Bignum bc jq gcc perl cpan curl crontabs openssl openssl-* mysql && \
+    yum install -y unzip wget perl-Crypt-OpenSSL-RSA perl-Crypt-OpenSSL-Bignum bc jq gcc perl cpan curl crontabs openssl openssl-* mysql && \
+    wget -q https://github.com/huangzhongzhang/Mojo-Webqq/archive/master.zip -OMojo-Webqq.zip && \
+    unzip -qo Mojo-Webqq.zip && \
+    cd Mojo-Webqq-master && \
     curl http://share-10066126.cos.myqcloud.com/cpanm.pl|perl - App::cpanminus && \
-    cpanm -vn Webqq::Encryption Mojo::IRC::Server::Chinese Mojo::SMTP::Client MIME::Lite Encode::Locale IO::Socket::SSL Mojo::Webqq && \
+    cpanm -nv Webqq::Encryption Mojo::IRC::Server::Chinese Mojo::SMTP::Client MIME::Lite Encode::Locale IO::Socket::SSL . && \
+    cd .. && \
+    rm -rf Mojo-Webqq-master Mojo-Webqq.zip && \
     echo "*/5 * * * * root cd /root;bash set_crontab.sh &> set_crontab_exec.log" > /etc/cron.d/setcrontab;
-
 EXPOSE 5011
-
 ENTRYPOINT ["bash","start_npc.sh"]
