@@ -44,7 +44,7 @@ RUN \
     perl-Encode-Locale \
     perl-Term-ANSIColor && \
     yum clean all && \
-    cpanm -vn Test::More Webqq::Encryption Mojolicious MIME::Lite Mojo::SMTP::Client Mojo::IRC::Server::Chinese && \
+    cpanm -vn Mojo::SMTP::Client Mojo::IRC::Server::Chinese MIME::Lite Test::More Webqq::Encryption Mojolicious && \
     wget -q https://github.com/sjdy521/Mojo-Webqq/archive/master.zip -OMojo-Webqq.zip \
     && unzip -qo Mojo-Webqq.zip \
     && cd Mojo-Webqq-master \
