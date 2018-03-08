@@ -19,6 +19,7 @@ RUN \
     chmod 755 viewqr && \
     yum install -y epel-release && \
     yum install -y unzip wget perl-Crypt-OpenSSL-RSA perl-Crypt-OpenSSL-Bignum bc jq gcc perl cpan curl crontabs openssl openssl-* mysql && \
+    yum clean all && \
     wget -q https://github.com/huangzhongzhang/Mojo-Webqq/archive/master.zip -OMojo-Webqq.zip && \
     unzip -qo Mojo-Webqq.zip && \
     cd Mojo-Webqq-master && \
