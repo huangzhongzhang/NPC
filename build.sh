@@ -15,7 +15,7 @@ if [[ "$1" == "deploy" ]]; then
 elif [[ "$1" == "run" ]]; then
     # 运行数据库容器
     docker run -d --name NPC_DATABASE \
-    -p 39306:3306 \
+    -p 3306:3306 \
     -v /etc/mysql:/etc/mysql \
     -v /var/lib/mysql:/var/lib/mysql \
     hzz1989/npc_database;
