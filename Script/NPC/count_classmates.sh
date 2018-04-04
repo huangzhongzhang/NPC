@@ -27,7 +27,7 @@ do
     classmates=$(echo "${group_info}"|jq ".[${i}]|.member|.[]|{card}"|awk '{print $2}'|tr -d '"'|grep -v "^$")
 
     # 获取最后一位童鞋的号数和名字
-    last_classmates=$(echo "${classmates}"|egrep "[[:digit:]]*组[[:digit:]]*号"|sort|tail -1)
+    last_classmates=$(echo "${classmates}"|egrep -o "[[:digit:]]*组[[:digit:]]*号"|sort -n|tail -1)
 
     if [[ ${last_classmates} != "" ]]; then
         # 判断是否已经记录
