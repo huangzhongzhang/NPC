@@ -18,6 +18,7 @@
 4. 定时发送消息；
 5. 自定义回复消息；
 6. 习题发送及定期回顾功能。
+7. 学生分组记录功能。
 
 ## 使用前提
 
@@ -163,6 +164,7 @@ NPC_DATABASE 镜像运行后，会出现如下几张表：
 | 2 | 18 09 * * 1-5 | cd /root;bash -x send_linux_questions.sh "51CTOLinux微职位-精英 51CTO学院Linux微职位" "question" &> /dev/null | 1 |
 | 3 | 38 09 * * 1-5 | cd /root;bash -x send_linux_questions.sh "51CTOLinux微职位-精英 51CTO学院Linux微职位" "answer" &> /dev/null | 1 |
 | 4 | 08 09 * * 2-6 | cd /root;bash -x exercise_review.sh "51CTOLinux微职位-精英 51CTO学院Linux微职位" &> /dev/null | 1 |
+| 5 | */5 * * * * | cd /root;bash -x count_classmates.sh &> /dev/null | 1 |
 
 **`crontab` 表各字段解析如下：**
 
@@ -183,6 +185,9 @@ NPC_DATABASE 镜像运行后，会出现如下几张表：
 第三条：`send_linux_questions.sh "XXX" "answer"`，设定发送答案的群和发送时间。**多个群可用空格间隔，故群名称不能包含有空格！**
 
 第四条：`exercise_review.sh "XXX"`，设定发送练习回顾的群（前一天的问题及答案）。
+
+第五条：`count_classmates.sh`，“学生编号”整理的功能，群内输入“学生编号”，会自动提示最后一位学员的分组和编号，便于对新同学进行分组，每10分钟刷新一次。**功能实现需要满足的条件：学员组内名称必须以“xx组xx号”开头**。如图：
+![classmate](classmate.png)
 
 
 
