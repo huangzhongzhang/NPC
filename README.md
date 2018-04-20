@@ -189,6 +189,12 @@ NPC_DATABASE 镜像运行后，会出现如下几张表：
 第五条：`count_classmates.sh`，“学生编号”整理的功能，群内输入“学生编号”，会自动提示最后一位学员的分组和编号，便于对新同学进行分组，每10分钟刷新一次。**功能实现需要满足的条件：学员组内名称必须包含“xx组xx号”**。如图：
 ![classmate](classmate.png)
 
+## 也可以从 docker hub 直接 pull 镜像进行使用
+
+```bash
+docker pull hzz1989/npc_database;
+docker pull hzz1989/npc;
+```
 
 
 
