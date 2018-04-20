@@ -15,8 +15,6 @@ if echo 'a'|telnet -e a $API_ADDR $API_PORT &> /dev/null
 then
     # 处理 message 格式
     message=$(echo -e "${2}"|od -t x1 -A n -v -w10000 | tr " " %)
-    # 处理 Gname 的格式
-    Gname=$(echo -e "${Gname}"|od -t x1 -A n -v -w10000 | tr " " %)
     # 发送信息
     api_url="http://$API_ADDR:$API_PORT/openqq/send_group_message?name=${Gname}&content=${message}&async=1"
     set -x
