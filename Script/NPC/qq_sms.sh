@@ -13,14 +13,12 @@ API_PORT=5011
 
 if echo 'a'|telnet -e a $API_ADDR $API_PORT &> /dev/null
 then
-    # 处理下编码，用于合并告警内容的标题和内容，即$2和$3
+    # 处理 message 格式
     message=$(echo -e "${2}"|od -t x1 -A n -v -w10000 | tr " " %)
-
-    # 获取GID
-    GID=$(curl -s "http://$API_ADDR:$API_PORT/openqq/get_group_basic_info"|jq '.[]|{name,id}'|tr -d "{,}\""|grep -A 1 -B 1 "$Gname"|grep -v "$Gname"|awk '{print $2}'|bc)
-
+    # 处理 Gname 的格式
+    Gname=$(echo -e "${Gname}"|od -t x1 -A n -v -w10000 | tr " " %)
     # 发送信息
-    api_url="http://$API_ADDR:$API_PORT/openqq/send_group_message?id=$GID&content=$message"
+    api_url="http://$API_ADDR:$API_PORT/openqq/send_group_message?name=${Gname}&content=${message}&async=1"
     set -x
     curl $api_url
     set +x
