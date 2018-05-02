@@ -196,5 +196,9 @@ docker pull hzz1989/npc_database;
 docker pull hzz1989/npc;
 ```
 
+## 可以修改 Script/NPC/login.pl 文件，以实现更多功能
+
+可参照《[MOJO::WEBQQ 使用简介](https://www.huangzz.xyz/mojo-webqq-shi-yong-jian-jie.html)》。
+
 
 
