@@ -51,8 +51,8 @@ my $msg = $_[1];
 $client->load("GroupManage",data=>{
         # allow_group => [423837909,438891576,651047263],  #可选，允许插件的群，可以是群名称或群号码
         # ban_group   => ["私人群",123456], #可选，禁用该插件的群，可以是群名称或群号码
-        is_new_group_notice => 1,         #可选，是否发送新加入群提醒消息，默认 1
-        is_new_group_member_notice => 1,  #可选，是否发送新增群成员提醒消息，默认 1
+        is_new_group_notice => 0,         #可选，是否发送新加入群提醒消息，默认 1
+        is_new_group_member_notice => 0,  #可选，是否发送新增群成员提醒消息，默认 1
         is_lose_group_member_notice => 0, #可选，是否发送退出群成员离开提醒消息，默认 1
         is_group_member_property_change_notice => 0, #可选，是否发送群名片变更提醒消息，默认 0
         new_group_member => '欢迎新童鞋 @%s 入群！[鼓掌][鼓掌][鼓掌]', #新成员入群欢迎语，%s会被替换成群成员名称
@@ -94,7 +94,7 @@ $client->load("SmartReply",data=>{
         ban_time        => 3600, #可选，拉入黑名单时间，默认1200秒
         period          => 600, #可选，限制周期，单位 秒
         is_need_at      => 1,  #默认是1 是否需要艾特才触发回复 仅针对群消息
-        keyword         => [qw(NPC npc)], #触发智能回复的关键字
+        keyword         => [qw(NPC npc Npc 机器人)], #触发智能回复的关键字
     });
 
 $client->load("ProgramCode");
