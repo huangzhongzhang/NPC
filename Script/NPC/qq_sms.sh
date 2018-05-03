@@ -21,5 +21,5 @@ then
     curl $api_url
     set +x
 else
-    echo "\nOPEN-QQ服务未启动，跳过信息发送！\n"
+    echo -e "\nOPEN-QQ服务未启动，跳过信息发送！\n"
 fi
