@@ -20,7 +20,7 @@ RUN \
     yum install -y epel-release && \
     yum install -y unzip wget perl-Crypt-OpenSSL-RSA perl-Crypt-OpenSSL-Bignum telnet gcc perl cpan curl crontabs openssl openssl-* mysql && \
     yum clean all && \
-    wget -q https://github.com/huangzhongzhang/Mojo-Webqq/archive/master.zip -OMojo-Webqq.zip && \
+    wget -q https://github.com/sjdy521/Mojo-Webqq/archive/v2.1.9.zip -OMojo-Webqq.zip && \
     unzip -qo Mojo-Webqq.zip && \
     cd Mojo-Webqq-master && \
     curl http://share-10066126.cos.myqcloud.com/cpanm.pl|perl - App::cpanminus && \
