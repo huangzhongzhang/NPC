@@ -27,7 +27,7 @@ RUN \
     curl http://share-10066126.cos.myqcloud.com/cpanm.pl|perl - App::cpanminus && \
     cpanm -nv Webqq::Encryption Mojo::IRC::Server::Chinese Mojo::SMTP::Client MIME::Lite Encode::Locale IO::Socket::SSL Digest::MD5 . && \
     cd .. && \
-    rm -rf Mojo-Webqq-$MOJO_WEBQQ_VERSION Mojo-Webqq-$MOJO_WEBQQ_VERSION.zip && \
+    rm -rf Mojo-Webqq-$MOJO_WEBQQ_VERSION v$MOJO_WEBQQ_VERSION.zip && \
     echo "*/5 * * * * root cd /root;bash set_crontab.sh &> set_crontab_exec.log" > /etc/cron.d/setcrontab;
 EXPOSE 5011
 ENTRYPOINT ["bash","start_npc.sh"]
