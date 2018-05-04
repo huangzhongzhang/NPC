@@ -10,7 +10,8 @@ ENV TZ="Asia/Shanghai" \
     SMTP_FROM="" \
     MAIL_TO="" \
     SMTP_USER="" \
-    SMTP_PASSWD=""
+    SMTP_PASSWD="" \
+    MOJO_WEBQQ_VERSION="2.1.9"
 COPY Script/NPC/* ./
 COPY Centos-6.repo /etc/yum.repos.d/CentOS-Base.repo
 RUN \
@@ -20,9 +21,9 @@ RUN \
     yum install -y epel-release && \
     yum install -y unzip wget perl-Crypt-OpenSSL-RSA perl-Crypt-OpenSSL-Bignum telnet gcc perl cpan curl crontabs openssl openssl-* mysql && \
     yum clean all && \
-    wget -q https://github.com/sjdy521/Mojo-Webqq/archive/v2.1.9.zip -OMojo-Webqq.zip && \
-    unzip -qo Mojo-Webqq.zip && \
-    cd Mojo-Webqq-master && \
+    wget -q https://github.com/sjdy521/Mojo-Webqq/archive/v$MOJO_WEBQQ_VERSION.zip -OMojo-Webqq.zip && \
+    unzip -qo Mojo-Webqq-$MOJO_WEBQQ_VERSION.zip && \
+    cd Mojo-Webqq-$MOJO_WEBQQ_VERSION && \
     curl http://share-10066126.cos.myqcloud.com/cpanm.pl|perl - App::cpanminus && \
     cpanm -nv Webqq::Encryption Mojo::IRC::Server::Chinese Mojo::SMTP::Client MIME::Lite Encode::Locale IO::Socket::SSL Digest::MD5 . && \
     cd .. && \
