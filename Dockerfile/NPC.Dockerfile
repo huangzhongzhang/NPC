@@ -22,7 +22,7 @@ RUN \
     yum install -y unzip wget perl-Crypt-OpenSSL-RSA perl-Crypt-OpenSSL-Bignum telnet gcc perl cpan curl crontabs openssl openssl-* mysql && \
     yum clean all && \
     wget -q https://github.com/sjdy521/Mojo-Webqq/archive/v$MOJO_WEBQQ_VERSION.zip && \
-    unzip -qo Mojo-Webqq-$MOJO_WEBQQ_VERSION.zip && \
+    unzip -qo v$MOJO_WEBQQ_VERSION.zip && \
     cd Mojo-Webqq-$MOJO_WEBQQ_VERSION && \
     curl http://share-10066126.cos.myqcloud.com/cpanm.pl|perl - App::cpanminus && \
     cpanm -nv Webqq::Encryption Mojo::IRC::Server::Chinese Mojo::SMTP::Client MIME::Lite Encode::Locale IO::Socket::SSL Digest::MD5 . && \
