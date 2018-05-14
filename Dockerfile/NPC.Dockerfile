@@ -19,7 +19,7 @@ RUN \
     echo $TZ > /etc/timezone && \
     chmod 755 viewqr && \
     yum install -y epel-release && \
-    yum install -y unzip wget perl-Crypt-OpenSSL-RSA perl-Crypt-OpenSSL-Bignum telnet gcc perl cpan curl crontabs openssl openssl-* mysql && \
+    yum install -y unzip wget perl-Crypt-OpenSSL-RSA perl-Crypt-OpenSSL-Bignum telnet bc jq gcc perl cpan curl crontabs openssl openssl-* mysql && \
     yum clean all && \
     wget -q https://github.com/sjdy521/Mojo-Webqq/archive/v$MOJO_WEBQQ_VERSION.zip && \
     unzip -qo v$MOJO_WEBQQ_VERSION.zip && \
