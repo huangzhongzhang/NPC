@@ -22,21 +22,6 @@ my $client=Mojo::Webqq->new(
 
 $client->login();
 
-#$client->load("ShowMsg");
-
-#$client->on(receive_message=>sub{
-#my $msg = $_[1];
-#  $client->relogin() if $msg->content eq "relogin";
-#  $client->_relink() if $msg->content eq "_relink";
-#  $client->relink() if $msg->content eq "relink";
-#  $client->update_user() if $msg->content eq "update_user";
-#  $client->update_group() if $msg->content eq "update_group";
-#  $client->update_group_ext() if $msg->content eq "update_group_ext";
-#  $client->update_friend() if $msg->content eq "update_friend";
-#  $client->update_friend_ext() if $msg->content eq "update_friend_ext";
-#  $client->update_discuss() if $msg->content eq "update_discuss";
-#});
-
 $client->load("GroupManage",data=>{
         # allow_group => [423837909,438891576,651047263],  #可选，允许插件的群，可以是群名称或群号码
         # ban_group   => ["私人群",123456], #可选，禁用该插件的群，可以是群名称或群号码
