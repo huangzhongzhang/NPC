@@ -2,8 +2,6 @@
 
 以 Mojo-Webqq-Docker 为基础，具备 smartreply 和 openqq 等功能的 NPC。
 
-**~~由于腾讯接口限制，NPC 每次扫码登录只能维持在线48小时以内，若出现超时、掉线或网络异常，需重新扫码登录（若配置了邮件发送，会发送最多10次二维码邮件进行通知）。~~**
-
 **现已支持并默认使用用户名密码登录。**
 
 ## Mojo::Webqq项目地址:
@@ -26,37 +24,24 @@
 
 ## 简单使用
 
-简单使用不需要配置数据库，克隆代码后，修改 build.sh 里面的相关内容，设置二维码发送的邮箱信息（以便账号密码无法登录时能尝试二维码登录）及 QQ 登录的密码：
+简单使用不需要配置数据库，克隆代码后，修改 build.sh 里面的相关内容，设置 QQ 登录的密码：
 
 ```bash
 # 运行的QQ账号
 QQ_ACCOUNT="2774984XXX"
 # 运行的QQ密码
 QQ_PASSWD="ABCD" 
-# 邮箱服务器地址
-SMTP_SERVER="smtp.qq.com" 
-# 邮箱服务器端口
-SMTP_PORT="465" 
-# 邮件来源
-SMTP_FROM="2774984XXX@qq.com" 
-# 发送到的邮箱
-MAIL_TO="hzz1989@XXX.com" 
-# 邮箱服务器账号
-SMTP_USER="2774984XXX" 
-# 邮箱服务器密码，QQ邮箱需要填授权码
-SMTP_PASSWD="rwkbsbruwqhldXXX" 
 ```
 
-* 邮箱信息只是在账号密码无法登录时能尝试二维码登录而配置，非必填。
-* 若账号密码无法登录，设定 MAIL_TO 的邮箱会收到一封包含的二维码邮件，用 手机QQ 提前登录需要变成 NPC 的 QQ，尝试扫码登录。
-
 更改完成后创建镜像并运行即可：
-
-**依赖镜像下载时较慢，建议添加 docker 加速器后执行，比如 DaoCloud 的加速器：https://www.daocloud.io/mirror 。**
 
 ```bash
 bash build.sh run
 ```
+
+**依赖镜像下载时较慢，建议添加 docker 加速器后执行，比如 DaoCloud 的加速器：https://www.daocloud.io/mirror 。**
+**若使用密码登录失败，则查看日志，扫描二维码进行登录。**
+**查看此 issue 来分析和解决密码登录失败的问题：https://github.com/sjdy521/Mojo-Webqq/issues/183**
 
 * 简单使用方式只包含前3个功能，后面的功能需依托数据库配置。
 

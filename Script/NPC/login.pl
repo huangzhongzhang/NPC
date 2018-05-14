@@ -18,18 +18,18 @@ my $client=Mojo::Webqq->new(
     poll_failure_count_max  =>  200, # 获取信息失败重试次数
     ignore_poll_retcode  =>  [102,109,110,1202,100000,100012], # 忽略的错误码
     pwd  =>  "$ARGV[1]", # 你的QQ账号密码的md5值，shell下通过echo -n xxx|md5sum生成md5值
-#   tmpdir  =>  "/tmp", # 二维码存放目录
+    tmpdir  =>  "/tmp", # 二维码存放目录
 );
 
 # 发送二维码到邮箱
-$client->load("PostQRcode",data=>{
-        smtp    =>  "$ARGV[2]", # 邮箱的smtp地址
-        port    =>  "$ARGV[3]", # smtp服务器端口，默认25
-        from    =>  "$ARGV[4]", # 发件人
-        to      =>  "$ARGV[5]", # 收件人
-        user    =>  "$ARGV[6]", # smtp登录帐号，建议使用要登录的QQ作为发送邮件的账号
-        pass    =>  "$ARGV[7]", # smtp登录密码，若使用QQ邮箱，需手动在 设置-账户 中生成授权码
-    });
+#$client->load("PostQRcode",data=>{
+#        smtp    =>  "$ARGV[2]", # 邮箱的smtp地址
+#        port    =>  "$ARGV[3]", # smtp服务器端口，默认25
+#        from    =>  "$ARGV[4]", # 发件人
+#        to      =>  "$ARGV[5]", # 收件人
+#        user    =>  "$ARGV[6]", # smtp登录帐号，建议使用要登录的QQ作为发送邮件的账号
+#        pass    =>  "$ARGV[7]", # smtp登录密码，若使用QQ邮箱，需手动在 设置-账户 中生成授权码
+#    });
 
 $client->login();
 
