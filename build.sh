@@ -26,6 +26,12 @@ elif [[ "$1" == "run" ]]; then
     --link NPC_DATABASE:database \
     -e QQ_ACCOUNT="2774984XXX" \
     -e QQ_PASSWD="ABCD" \
+    -e SMTP_SERVER="smtp.qq.com" \
+    -e SMTP_PORT="465" \
+    -e SMTP_FROM="2774984XXX@qq.com" \
+    -e MAIL_TO="hzz1989@XXX.com" \
+    -e SMTP_USER="2774984XXX" \
+    -e SMTP_PASSWD="rwkbsbruwqhldXXX" \
     hzz1989/npc;
 
     # 查看日志
