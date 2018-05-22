@@ -26,7 +26,11 @@ do
         sleep 10
         ./viewqr /tmp/mojo_webqq_qrcode_$QQ_ACCOUNT.png
     fi
-    sleep 300
+    for (( i=300;i>=1;i-- ))
+    do
+        echo "$i"
+        sleep 1
+    done
     if [[ $(tail -10 /tmp/nohup.out|grep '二维码'|wc -l) -gt 1 && $restart_count -lt $restart_total ]];then
         set -x
         echo "$process_string"|awk '{print $2}'|xargs kill -9;
