@@ -45,7 +45,10 @@ do
         let restart_count++
         echo "$(date) 第 $restart_count 次重启完成！"
         echo -e "\n"
-    else
+    elif [[ $restart_count -eq $restart_total ]];then
+        echo "达到重启次数限制，退出程序！"
+        exit 1;
+    elif [[ $restart_count -gt $restart_total ]];then
         echo "超出重启次数限制，退出程序！"
         exit 1;
     fi
