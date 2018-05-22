@@ -41,6 +41,7 @@ do
         echo "$(date) 第 $restart_count 次重启完成！"
         echo -e "\n"
     else
+        echo "超出重启次数限制，退出程序！"
         exit 1;
     fi
 done
