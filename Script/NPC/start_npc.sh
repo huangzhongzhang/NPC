@@ -31,11 +31,12 @@ do
         echo "$i"
         sleep 1
     done
-    if [[ $(tail -10 /tmp/nohup.out|grep '二维码'|wc -l) -gt 1 && $restart_count -lt $restart_total ]];then
+    if [[ $(tail -10 nohup.out|grep '二维码'|wc -l) -gt 1 && $restart_count -lt $restart_total ]];then
         set -x
         echo "$process_string"|awk '{print $2}'|xargs kill -9;
         echo "$(date) Mojo-Webqq进程已杀死！"
         sleep 5
+        rm -rf /tmp/mojo_webqq_*
         nohup perl login.pl $QQ_ACCOUNT $QQ_PASSWD_MD5 $SMTP_SERVER $SMTP_PORT $SMTP_FROM $MAIL_TO $SMTP_USER $SMTP_PASSWD &
         set +x
         echo "$(date) Mojo-Webqq进程已启动！"
