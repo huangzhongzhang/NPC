@@ -16,7 +16,7 @@ my $client=Mojo::Webqq->new(
     log_level   => "debug",     # 日志打印级别
     login_type  =>  "login", # "qrlogin"表示二维码登录，"login"表示账号密码登录。注意: 如果腾讯关闭了帐号密码的登录方式，这种情况下只能使用二维码扫描登录。
     poll_failure_count_max  =>  200, # 获取信息失败重试次数
-    ignore_poll_retcode  =>  [102,109,110,1202,100000,100012], # 忽略的错误码
+    ignore_poll_retcode  =>  [102,109,110,1202,100012], # 忽略的错误码
     pwd  =>  "$ARGV[1]", # 你的QQ账号密码的md5值，shell下通过echo -n xxx|md5sum生成md5值
     tmpdir  =>  "/tmp", # 二维码存放目录
 );
