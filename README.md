@@ -30,17 +30,17 @@ docker pull hzz1989/npc;
 
 # 运行容器（登录二维码会自动发送到配置的邮箱）
 docker run -t --name NPC \
-    -p 5011:5011 \
-    --link NPC_DATABASE:database \
-    -e QQ_ACCOUNT="2774984XXX" \
-    -e QQ_PASSWD="ABCD" \
-    -e SMTP_SERVER="smtp.qq.com" \
-    -e SMTP_PORT="465" \
-    -e SMTP_FROM="2774984XXX@qq.com" \
-    -e MAIL_TO="hzz1989@XXX.com" \
-    -e SMTP_USER="2774984XXX" \
-    -e SMTP_PASSWD="rwkbsbruwqhldXXX" \
-    hzz1989/npc;
+-p 5011:5011 \
+--link NPC_DATABASE:database \
+-e QQ_ACCOUNT="2774984XXX" \
+-e QQ_PASSWD="ABCD" \
+-e SMTP_SERVER="smtp.qq.com" \
+-e SMTP_PORT="465" \
+-e SMTP_FROM="2774984XXX@qq.com" \
+-e MAIL_TO="hzz1989@XXX.com" \
+-e SMTP_USER="2774984XXX" \
+-e SMTP_PASSWD="rwkbsbruwqhldXXX" \
+hzz1989/npc;
 ```
 
 ### 自建镜像
