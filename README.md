@@ -27,8 +27,16 @@
 ```bash
 # 拉取镜像
 docker pull hzz1989/npc;
+docker pull hzz1989/npc_database;
 
-# 运行容器（登录二维码会自动发送到配置的邮箱）
+# 运行 DB 容器
+docker run -d --name NPC_DATABASE \
+-p 3306:3306 \
+-v /etc/mysql:/etc/mysql \
+-v /var/lib/mysql:/var/lib/mysql \
+hzz1989/npc_database;
+
+# 运行 NPC 容器（登录二维码会自动发送到配置的邮箱）
 docker run -t --name NPC \
 -p 5011:5011 \
 --link NPC_DATABASE:database \
