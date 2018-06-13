@@ -2,8 +2,6 @@
 
 以 Mojo-Webqq-Docker 为基础，具备 smartreply 和 openqq 等功能的 NPC。
 
-**现已支持并默认使用用户名密码登录。**
-
 ## Mojo::Webqq项目地址:
 [Mojo::Webqq](https://github.com/sjdy521/Mojo-Webqq)  
 感谢[灰灰](https://github.com/sjdy521)的倾情付出。
@@ -24,13 +22,40 @@
 
 ## 简单使用
 
-简单使用不需要配置数据库，克隆代码后，修改 build.sh 里面的相关内容，设置 QQ 登录的密码：
+### 使用已有镜像
 
 ```bash
-# 运行的QQ账号
+# 拉取镜像
+docker pull hzz1989/npc;
+
+# 运行容器（登录二维码会自动发送到配置的邮箱）
+docker run -t --name NPC \
+    -p 5011:5011 \
+    --link NPC_DATABASE:database \
+    -e QQ_ACCOUNT="2774984XXX" \
+    -e QQ_PASSWD="ABCD" \
+    -e SMTP_SERVER="smtp.qq.com" \
+    -e SMTP_PORT="465" \
+    -e SMTP_FROM="2774984XXX@qq.com" \
+    -e MAIL_TO="hzz1989@XXX.com" \
+    -e SMTP_USER="2774984XXX" \
+    -e SMTP_PASSWD="rwkbsbruwqhldXXX" \
+    hzz1989/npc;
+```
+
+### 自建镜像
+
+克隆代码后，修改 build.sh 里面的相关内容，设置 QQ 登录的密码及邮箱信息：
+
+```bash
 QQ_ACCOUNT="2774984XXX"
-# 运行的QQ密码
-QQ_PASSWD="ABCD" 
+QQ_PASSWD="ABCD"
+SMTP_SERVER="smtp.qq.com"
+SMTP_PORT="465"
+SMTP_FROM="2774984XXX@qq.com"
+MAIL_TO="hzz1989@XXX.com"
+SMTP_USER="2774984XXX"
+SMTP_PASSWD="rwkbsbruwqhldXXX"
 ```
 
 更改完成后创建镜像并运行即可：
@@ -40,8 +65,6 @@ bash build.sh run
 ```
 
 **依赖镜像下载时较慢，建议添加 docker 加速器后执行，比如 DaoCloud 的加速器：https://www.daocloud.io/mirror 。**
-**若使用密码登录失败，则查看日志，扫描二维码进行登录。**
-**查看此 issue 来分析和解决密码登录失败的问题：https://github.com/sjdy521/Mojo-Webqq/issues/183**
 
 * 简单使用方式只包含前3个功能，后面的功能需依托数据库配置。
 
@@ -170,13 +193,6 @@ NPC_DATABASE 镜像运行后，会出现如下几张表：
 
 第四条：`count_classmates.sh`，“学生编号”整理的功能，群内输入“学生编号”，会自动提示最后一位学员的分组和编号，便于对新同学进行分组，每10分钟刷新一次。**功能实现需要满足的条件：学员组内名称必须包含“xx组xx号”**。如图：
 ![classmate](classmate.png)
-
-## 也可以从 docker hub 直接 pull 镜像进行使用
-
-```bash
-docker pull hzz1989/npc_database;
-docker pull hzz1989/npc;
-```
 
 ## 可以修改 Script/NPC/login.pl 文件，以实现更多功能
 
