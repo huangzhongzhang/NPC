@@ -19,7 +19,7 @@ do
     process_string=$(ps -ef|grep login.pl|grep -v grep)
     if [[ -z "$process_string" ]]; then
         set -x
-        rm -rf /tmp/mojo_webqq_*
+        rm -rf /tmp/*
         nohup perl login.pl $QQ_ACCOUNT $QQ_PASSWD_MD5 $SMTP_SERVER $SMTP_PORT $SMTP_FROM $MAIL_TO $SMTP_USER $SMTP_PASSWD &
         set +x
         echo "$(date) Mojo-Webqq进程已启动！"
@@ -32,7 +32,7 @@ do
         echo "$process_string"|awk '{print $2}'|xargs kill -9;
         echo "$(date) Mojo-Webqq进程已杀死！"
         sleep 5
-        rm -rf /tmp/mojo_webqq_*
+        rm -rf /tmp/*
         nohup perl login.pl $QQ_ACCOUNT $QQ_PASSWD_MD5 $SMTP_SERVER $SMTP_PORT $SMTP_FROM $MAIL_TO $SMTP_USER $SMTP_PASSWD &
         set +x
         echo "$(date) Mojo-Webqq进程已启动！"
