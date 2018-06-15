@@ -29,6 +29,7 @@ $client->load("PostQRcode",data=>{
         to      =>  "$ARGV[5]", # 收件人
         user    =>  "$ARGV[6]", # smtp登录帐号，建议使用要登录的QQ作为发送邮件的账号
         pass    =>  "$ARGV[7]", # smtp登录密码，若使用QQ邮箱，需手动在 设置-账户 中生成授权码
+        max     =>  "1", # 设定最大发送次数为1，由启动脚本来控制发送次数。
 });
 
 $client->login();
