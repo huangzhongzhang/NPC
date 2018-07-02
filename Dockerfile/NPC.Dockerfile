@@ -11,7 +11,7 @@ ENV TZ="Asia/Shanghai" \
     MAIL_TO="" \
     SMTP_USER="" \
     SMTP_PASSWD="" \
-    MOJO_WEBQQ_VERSION="2.2.1"
+    MOJO_WEBQQ_VERSION="2.2.2"
 COPY Script/NPC/* ./
 COPY Centos-6.repo /etc/yum.repos.d/CentOS-Base.repo
 RUN \
