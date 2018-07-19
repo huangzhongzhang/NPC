@@ -78,7 +78,15 @@ bash build.sh run
 
 执行 build.sh 后，会自动创建数据库镜像，并运行数据库容器。
 
-数据库默认端口为 3306。
+数据库信息如下：
+
+```
+port：13306
+user：npc
+password：QXCTyPzWEa5rBDs2
+
+数据库用户名和密码可在 NPC/Script/Mysql/start_mysql.sh 中设置。
+```
 
 NPC_DATABASE 镜像运行后，会出现如下几张表：
 
