@@ -1,4 +1,4 @@
-FROM centos:6
+FROM daocloud.io/centos:6
 MAINTAINER HZZ <huangzz.xyz>
 WORKDIR /root
 ENV TZ=Asia/Shanghai
