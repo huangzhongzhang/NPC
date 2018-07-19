@@ -72,8 +72,6 @@ SMTP_PASSWD="rwkbsbruwqhldXXX"
 bash build.sh run
 ```
 
-**依赖镜像下载时较慢，建议添加 docker 加速器后执行，比如 DaoCloud 的加速器：https://www.daocloud.io/mirror 。**
-
 * 简单使用方式只包含前3个功能，后面的功能需依托数据库配置。
 
 ## 数据库配置
@@ -140,8 +138,6 @@ NPC_DATABASE 镜像运行后，会出现如下几张表：
 
 `comment`：备注。
 
-**需要注意的是，此功能需配合 [定时任务功能](https://github.com/huangzhongzhang/NPC#定时任务功能) 使用，定时将数据写入指定文件方可生效。**
-
 ### 习题库配置
 
 设定习题，定时发送习题及答案，给有需要的童鞋。
@@ -173,7 +169,7 @@ NPC_DATABASE 镜像运行后，会出现如下几张表：
 
 ### 定时任务功能
 
-若要实现 `自定义回复消息` 以及 `习题发送及定期回顾功能` ，我们需要配置 `Crontab`
+若要实现 `习题发送及定期回顾功能` ，我们需要配置 `Crontab`
 定时任务。
 
 **`Crontab` 表示例如下：**
