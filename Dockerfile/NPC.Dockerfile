@@ -11,7 +11,7 @@ ENV TZ="Asia/Shanghai" \
     MAIL_TO="" \
     SMTP_USER="" \
     SMTP_PASSWD="" \
-    MOJO_WEBQQ_VERSION="2.1.9"
+    MOJO_WEBQQ_VERSION="2.2.6"
 COPY Script/NPC/* ./
 RUN \
     set -x;ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
