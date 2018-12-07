@@ -17,11 +17,8 @@ RUN \
     set -x;ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
     echo $TZ > /etc/timezone && \
     chmod 755 viewqr && \
-    yum install -y wget && \
-    rm /etc/yum.repos.d/* && \
-    wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo && \
-    wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-6.repo && \
-    yum install -y unzip perl-Crypt-OpenSSL-RSA perl-Crypt-OpenSSL-Bignum telnet bc jq gcc perl cpan curl crontabs openssl openssl-* mysql && \
+    yum install -y epel-release wget && \
+    yum install -y wget unzip perl-Crypt-OpenSSL-RSA perl-Crypt-OpenSSL-Bignum telnet bc jq gcc perl cpan curl crontabs openssl openssl-* mysql && \
     yum clean all && \
     wget -q https://github.com/sjdy521/Mojo-Webqq/archive/v$MOJO_WEBQQ_VERSION.zip && \
     unzip -qo v$MOJO_WEBQQ_VERSION.zip && \
