@@ -1,5 +1,6 @@
 # NPC 使用说明
 
+## 腾讯已于2019年1月1日关闭WebQQ接口，此程序已无法使用，仅作学习参考。
 以 Mojo-Webqq-Docker 为基础，具备 smartreply 和 openqq 等功能的 NPC。
 
 ## Mojo::Webqq项目地址:
